@@ -1,0 +1,6 @@
+{
+  "name": "MotoTracker",
+  "description": "Tu Garaje Virtual y Control de Mantenimiento de Motos Inteligente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
