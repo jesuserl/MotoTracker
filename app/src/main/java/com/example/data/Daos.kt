@@ -17,8 +17,14 @@ interface BikeDao {
     @Query("SELECT * FROM bikes WHERE userId = :userId")
     fun getBikesForUser(userId: String): Flow<List<BikeEntity>>
 
+    @Query("SELECT * FROM bikes WHERE userId = :userId")
+    suspend fun getBikesForUserSync(userId: String): List<BikeEntity>
+
     @Query("SELECT * FROM bikes WHERE id = :bikeId LIMIT 1")
     suspend fun getBikeById(bikeId: String): BikeEntity?
+
+    @Query("SELECT * FROM bikes WHERE id = :bikeId LIMIT 1")
+    fun getBikeByIdFlow(bikeId: String): Flow<BikeEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBike(bike: BikeEntity)
@@ -53,6 +59,9 @@ interface ServiceIntervalDao {
 
 @Dao
 interface ServiceHistoryDao {
+    @Query("SELECT * FROM service_histories")
+    fun getAllHistory(): Flow<List<ServiceHistoryEntity>>
+
     @Query("SELECT * FROM service_histories WHERE bikeId = :bikeId")
     fun getHistoryForBike(bikeId: String): Flow<List<ServiceHistoryEntity>>
 
@@ -64,4 +73,37 @@ interface ServiceHistoryDao {
 
     @Query("DELETE FROM service_histories WHERE bikeId = :bikeId")
     suspend fun deleteHistoryForBike(bikeId: String)
+}
+
+@Dao
+interface CustomBikeStyleDao {
+    @Query("SELECT * FROM custom_bike_styles WHERE userId = :userId")
+    fun getCustomStylesForUser(userId: String): Flow<List<CustomBikeStyleEntity>>
+
+    @Query("SELECT * FROM custom_bike_styles WHERE userId = :userId")
+    suspend fun getCustomStylesForUserSync(userId: String): List<CustomBikeStyleEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCustomStyle(style: CustomBikeStyleEntity)
+
+    @Query("DELETE FROM custom_bike_styles WHERE id = :id")
+    suspend fun deleteCustomStyle(id: String)
+}
+
+@Dao
+interface FuelLogDao {
+    @Query("SELECT * FROM fuel_logs WHERE bikeId = :bikeId ORDER BY mileage DESC")
+    fun getFuelLogsForBike(bikeId: String): Flow<List<FuelLogEntity>>
+
+    @Query("SELECT * FROM fuel_logs WHERE bikeId = :bikeId ORDER BY mileage DESC")
+    suspend fun getFuelLogsForBikeSync(bikeId: String): List<FuelLogEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFuelLog(log: FuelLogEntity)
+
+    @Query("DELETE FROM fuel_logs WHERE id = :id")
+    suspend fun deleteFuelLog(id: String)
+
+    @Query("DELETE FROM fuel_logs WHERE bikeId = :bikeId")
+    suspend fun deleteFuelLogsForBike(bikeId: String)
 }

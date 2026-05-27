@@ -101,7 +101,7 @@ fun MotorcycleDrawing(style: String, modifier: Modifier = Modifier) {
                     cap = StrokeCap.Round
                 )
                 drawLine(
-                    color = Color(0xFF1A202C),
+                    color = Color(0xFF1A305C),
                     start = Offset(130f, 85f),
                     end = Offset(165f, 80f),
                     strokeWidth = 12f,
@@ -162,6 +162,96 @@ fun MotorcycleDrawing(style: String, modifier: Modifier = Modifier) {
                     start = Offset(95f, 85f),
                     end = Offset(145f, 75f),
                     strokeWidth = 20f,
+                    cap = StrokeCap.Round
+                )
+            }
+            "scrambler" -> {
+                // Scrambler retro bench seat
+                drawLine(
+                    color = styleColor,
+                    start = Offset(90f, 80f),
+                    end = Offset(145f, 80f),
+                    strokeWidth = 14f,
+                    cap = StrokeCap.Round
+                )
+                // Retro classic tank
+                drawLine(
+                    color = Color(0xFFE2E8F0),
+                    start = Offset(130f, 80f),
+                    end = Offset(165f, 75f),
+                    strokeWidth = 18f,
+                    cap = StrokeCap.Round
+                )
+                // High scrambler exhaust
+                drawLine(
+                    color = Color(0xFF718096),
+                    start = Offset(80f, 95f),
+                    end = Offset(170f, 95f),
+                    strokeWidth = 6f,
+                    cap = StrokeCap.Round
+                )
+            }
+            "cafe_racer" -> {
+                // Drop cafe racer bars
+                drawLine(
+                    color = Color(0xFFA0AEC0),
+                    start = Offset(155f, 55f),
+                    end = Offset(145f, 65f),
+                    strokeWidth = 6f,
+                    cap = StrokeCap.Round
+                )
+                // Single seat cowl hump back
+                drawLine(
+                    color = styleColor,
+                    start = Offset(90f, 82f),
+                    end = Offset(120f, 82f),
+                    strokeWidth = 14f,
+                    cap = StrokeCap.Round
+                )
+                drawCircle(
+                    color = styleColor,
+                    radius = 8f,
+                    center = Offset(83f, 76f)
+                )
+                // Classic flat tank
+                drawLine(
+                    color = Color(0xFFCBD5E0),
+                    start = Offset(115f, 80f),
+                    end = Offset(155f, 78f),
+                    strokeWidth = 16f,
+                    cap = StrokeCap.Round
+                )
+            }
+            "tracker" -> {
+                // Tracker style plate
+                drawLine(
+                    color = styleColor,
+                    start = Offset(100f, 75f),
+                    end = Offset(155f, 75f),
+                    strokeWidth = 12f,
+                    cap = StrokeCap.Round
+                )
+                // High exhaust pipe
+                drawLine(
+                    color = Color(0xFFA0AEC0),
+                    start = Offset(70f, 90f),
+                    end = Offset(150f, 90f),
+                    strokeWidth = 5f
+                )
+                // Tracker number plate outline
+                drawRect(
+                    color = Color.White,
+                    topLeft = Offset(150f, 40f),
+                    size = androidx.compose.ui.geometry.Size(20f, 20f)
+                )
+            }
+            else -> {
+                // Custom / Bobber or Fallback style
+                drawLine(
+                    color = styleColor,
+                    start = Offset(90f, 85f),
+                    end = Offset(145f, 80f),
+                    strokeWidth = 16f,
                     cap = StrokeCap.Round
                 )
             }

@@ -10,9 +10,11 @@ import androidx.room.RoomDatabase
         UserEntity::class,
         BikeEntity::class,
         ServiceIntervalEntity::class,
-        ServiceHistoryEntity::class
+        ServiceHistoryEntity::class,
+        CustomBikeStyleEntity::class,
+        FuelLogEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -20,6 +22,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun bikeDao(): BikeDao
     abstract fun serviceIntervalDao(): ServiceIntervalDao
     abstract fun serviceHistoryDao(): ServiceHistoryDao
+    abstract fun customBikeStyleDao(): CustomBikeStyleDao
+    abstract fun fuelLogDao(): FuelLogDao
 
     companion object {
         @Volatile
